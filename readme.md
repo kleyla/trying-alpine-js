@@ -74,3 +74,8 @@ Tambien manejamos un formulario: [aqui]("./src/index-4.html")
 ## Iterando arrays con x-for
 
 Ejemplo [aqui]("./src/index-6.html")
+
+## Acceso a un API
+
+Rick and Morty API: https://rickandmortyapi.com/documentation
+Ejemplo [aqui]("./src/index-7.html")

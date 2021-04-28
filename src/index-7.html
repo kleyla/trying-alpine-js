@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .characters-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .personaje {
+        width: 200px;
+        margin: 10px;
+        border: 1px solid black;
+        position: relative;
+      }
+      .personaje h4 {
+        padding: 5px 10px;
+      }
+      .personaje img {
+        width: 100%;
+      }
+      .personaje .specie {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: lightblue;
+        padding: 5px;
+      }
+      .personaje .origin {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="main()" x-init="fetchAPI()">
+      <p>Num paginas: <span x-text="numPages"></span></p>
+      <p>Pagina actual: <span x-text="page"></span></p>
+      <button @click="changePage('prev')">Anterior</button>
+      <button @click="changePage('next')">Siguiente</button>
+      <div class="characters-list">
+        <template x-for="personaje in characters">
+          <div class="personaje">
+            <img x-bind:src="personaje.image" alt="" />
+            <h4 x-text="personaje.name"></h4>
+            <p class="origin" x-text="personaje.origin.name"></p>
+            <p class="specie" x-text="personaje.species"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <script>
+      function main() {
+        return {
+          url: "https://rickandmortyapi.com/api/character/",
+          characters: [],
+          numPages: 0,
+          page: 1,
+          fetchAPI: function () {
+            fetch(this.url)
+              .then((response) => response.json())
+              .then((json) => {
+                this.characters = json.results;
+                this.numPages = json.info.pages;
+              });
+          },
+          changePage: async function (type) {
+            if (type === "next" && this.page < this.numPages) {
+              this.page++;
+            } else if (type === "prev" && this.page > 1) {
+              this.page--;
+            }
+            const response = await fetch(`${this.url}?page=${this.page}`);
+            this.characters = (await response.json()).results;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
