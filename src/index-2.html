@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style>
+      .active {
+        border: 1px solid black;
+        background-color: darkkhaki;
+      }
+      .inactive {
+        border: 0;
+        background-color: paleturquoise;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="main()">
+      <p x-text="open"></p>
+      <button @click="open = !open">Cambia!</button>
+      <p x-show="open">Hola mundo!</p>
+      <p x-bind:class="{'active': open, 'inactive': !open}">
+        Parrafo con estilo
+      </p>
+      <button x-bind:disabled="open">Pulsa</button>
+    </div>
+
+    <script>
+      function main() {
+        return {
+          open: true,
+        };
+      }
+    </script>
+  </body>
+</html>

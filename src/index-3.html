@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style>
+      button {
+        width: 200px;
+        height: 200px;
+      }
+      .miTexto {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="main()">
+      <button
+        @click="miClick(event)"
+        @mouseover="onMouseOver(event)"
+        @mouseout="onMouseOut(event)"
+      >
+        Pulsa
+      </button>
+    </div>
+
+    <div x-data="secondary()">
+      <p x-text="texto" class="miTexto"></p>
+      <input type="text" x-on:keydown.enter="onKeyPressEnter(event)" />
+      <input type="text" x-on:input="onInput(event)" />
+      <input type="checkbox" x-on:click.prevent />
+    </div>
+
+    <script>
+      function main() {
+        return {
+          miClick: function (event) {
+            console.log("Pulsado!");
+            console.log(event);
+          },
+          onMouseOver: function (event) {
+            event.target.style.backgroundColor = "green";
+            event.target.style.color = "white";
+          },
+          onMouseOut: function (event) {
+            event.target.style.backgroundColor = "white";
+            event.target.style.color = "black";
+          },
+        };
+      }
+
+      function secondary() {
+        return {
+          texto: "",
+          onKeyPressEnter: function (event) {
+            this.texto = event.target.value;
+          },
+          onInput: function (event) {
+            this.texto = event.target.value;
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div
+      x-data="{name: 'Karen', email: 'kleyla01@live.com'}"
+      x-init="name = 'Karen R'"
+    >
+      <p x-text="name"></p>
+    </div>
+    <div x-data="mainComp()" x-init="start()">
+      <p x-text="user"></p>
+    </div>
+    <script>
+      function mainComp() {
+        return {
+          user: "hi",
+          start: function () {
+            console.log("Arranca!");
+            this.user = "bye";
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
