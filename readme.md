@@ -59,3 +59,10 @@ Tanto `x-data` y `x-init` pueden ser funciones, la primera que retorne los datos
 ## Gestion de eventos
 
 Para manejar mas eventos ver [aqui]("./src/index-3.html")
+
+## Doble enlace con x-model
+
+- `x-model` enlaza el valor del campo de texto lo recibe la variable
+- `x-model.debounce.750` tarda 750 milisegundos para actulizar el valor
+
+Tambien manejamos un formulario: [aqui]("./src/index-4.html")

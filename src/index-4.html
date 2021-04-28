@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style></style>
+  </head>
+  <body>
+    <div x-data="main()">
+      <p x-text="texto"></p>
+      <input type="text" x-model="texto" />
+      <input type="text" x-model.debounce.750="texto" />
+      <button @click="onClick">Pulsa</button>
+    </div>
+
+    <div x-data="formulario()">
+      <p x-text="persona.nombre"></p>
+      <p x-text="persona.apellidos"></p>
+      <p x-text="persona.edad"></p>
+      <p x-text="persona.email"></p>
+
+      <div class="form-group">
+        <label for="">Nombres</label>
+        <input type="text" x-model="persona.nombre" />
+      </div>
+      <div class="form-group">
+        <label for="">Apellidos</label>
+        <input type="text" x-model="persona.apellidos" />
+      </div>
+      <div class="form-group">
+        <label for="">Edad</label>
+        <input type="text" x-model="persona.edad" />
+      </div>
+      <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" x-model="persona.email" />
+      </div>
+      <button @click="sendForm()">Enviar formulario</button>
+    </div>
+    <script>
+      function main() {
+        return {
+          texto: "",
+          onClick: function () {
+            console.log(this.texto);
+            setTimeout(() => {
+              this.texto = "desde el timeout";
+            }, 2000);
+          },
+        };
+      }
+      function formulario() {
+        return {
+          persona: {},
+          sendForm: function () {
+            console.log({ ...this.persona });
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
