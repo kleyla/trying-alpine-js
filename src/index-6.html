@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style>
+      .empleados-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .empleado {
+        width: 200px;
+        border: 1px solid black;
+        padding: 10px 30px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="main()">
+      <ul>
+        <template x-for="animal in animales" :key="animal">
+          <li x-text="animal"></li>
+        </template>
+      </ul>
+    </div>
+
+    <div x-data="empreadosList()" class="empleados-list">
+      <template x-for="empleado in empleados" :key="empleado">
+        <div class="empleado">
+          <h3 x-text="empleado.nombre + ' ' + empleado.apellidos"></h3>
+          <p>Depertamento <span x-text="empleado.departamento"></span></p>
+        </div>
+      </template>
+    </div>
+    <script>
+      function main() {
+        return {
+          animales: ["perro", "gato", "loro", "leopardo", "conejo"],
+        };
+      }
+      function empreadosList() {
+        return {
+          empleados: [
+            {
+              nombre: "Karen",
+              apellidos: "Rodriguez",
+              departamento: "desarrollo",
+            },
+            {
+              nombre: "Andrea",
+              apellidos: "Molina",
+              departamento: "Contabilidad",
+            },
+            {
+              nombre: "Yolanda",
+              apellidos: "Mendoza",
+              departamento: "Maeketing",
+            },
+          ],
+        };
+      }
+    </script>
+  </body>
+</html>

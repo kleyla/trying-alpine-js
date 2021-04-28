@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine js</title>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <style>
+      .producto {
+        width: 200px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      p {
+        width: 100%;
+        text-align: center;
+      }
+      .disponible {
+        background-color: green;
+        color: white;
+      }
+      .no-disponible {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="main()">
+      <button @click="open = !open">Muestra/oculta</button>
+      <template x-if="open">
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
+            soluta!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
+            soluta!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
+            soluta!
+          </p>
+        </div>
+      </template>
+
+      <div class="producto">
+        <h3 x-text="producto.nombre"></h3>
+        <p x-text="producto.precio"></p>
+        <template x-if="producto.activo">
+          <p class="disponible">Disponible</p>
+          <button>Comprar</button>
+        </template>
+        <template x-if="!producto.activo">
+          <p class="no-disponible">No Disponible</p>
+        </template>
+      </div>
+    </div>
+
+    <script>
+      function main() {
+        return {
+          open: true,
+          producto: {
+            nombre: "Dell",
+            precio: "400",
+            activo: true,
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

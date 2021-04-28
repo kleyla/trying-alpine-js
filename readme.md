@@ -66,3 +66,11 @@ Para manejar mas eventos ver [aqui]("./src/index-3.html")
 - `x-model.debounce.750` tarda 750 milisegundos para actulizar el valor
 
 Tambien manejamos un formulario: [aqui]("./src/index-4.html")
+
+## Uso de x-if
+
+`x-if` para ocultar o mostrar bloques de elementos ejemplo [aqui]("./src/index-5.html")
+
+## Iterando arrays con x-for
+
+Ejemplo [aqui]("./src/index-6.html")
