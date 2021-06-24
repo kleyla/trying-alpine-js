@@ -32,6 +32,8 @@ Tanto `x-data` y `x-init` pueden ser funciones, la primera que retorne los datos
 </script>
 ```
 
+Ejemplo [aqui](/src/index-1.html)
+
 ## Eventos
 
 - `x-on:click` o su equivalente `@click` son usados para los eventos.
@@ -56,26 +58,28 @@ Tanto `x-data` y `x-init` pueden ser funciones, la primera que retorne los datos
 </script>
 ```
 
+Ejemplo [aqui](/src/index-2.html)
+
 ## Gestion de eventos
 
-Para manejar mas eventos ver [aqui]("./src/index-3.html")
+Para manejar mas eventos ver [aqui](src/index-3.html)
 
 ## Doble enlace con x-model
 
 - `x-model` enlaza el valor del campo de texto lo recibe la variable
 - `x-model.debounce.750` tarda 750 milisegundos para actulizar el valor
 
-Tambien manejamos un formulario: [aqui]("./src/index-4.html")
+Tambien manejamos un formulario: [aqui](src/index-4.html)
 
 ## Uso de x-if
 
-`x-if` para ocultar o mostrar bloques de elementos ejemplo [aqui]("./src/index-5.html")
+`x-if` para ocultar o mostrar bloques de elementos ejemplo [aqui](src/index-5.html)
 
 ## Iterando arrays con x-for
 
-Ejemplo [aqui]("./src/index-6.html")
+Ejemplo [aqui](src/index-6.html)
 
 ## Acceso a un API
 
 Rick and Morty API: https://rickandmortyapi.com/documentation
-Ejemplo [aqui]("./src/index-7.html")
+Ejemplo [aqui](src/index-7.html)
